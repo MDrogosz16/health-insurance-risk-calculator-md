@@ -161,7 +161,7 @@ function calculateRiskScore(){
     console.log(document.getElementById("alzheimers").selectedOptions[0].value);
     console.log(question7Response);
 
-    let bmi =(question3Response*703) / (question2Response*question2Response);
+    let bmi =((question3Response*703) / (question2Response*question2Response));
     console.log("bmi="+bmi);
 
     let Age1 = Math.abs(question1Response);
@@ -192,7 +192,7 @@ function calculateRiskScore(){
         message = ", you are uninsurable."
 
     document.getElementById("userage").innerHTML = "Age: " + Age1;
-    document.getElementById("userbmi").innerHTML = "Your Calculated BMI: " + bmivalue;
+    document.getElementById("userbmi").innerHTML = "BMI: " + bmivalue + (" - index = " + Math.round(bmi * 100 / 100).toFixed(1));
     document.getElementById("userbloodpressure").innerHTML = "Blood Pressure: " + BloodPressure1;
     document.getElementById("userfamilyhistory").innerHTML = "Family History: " + FamilyHistory1;
     document.getElementById("riskscore").innerHTML = "Based on your risk score of " + totalRiskScore + message;
