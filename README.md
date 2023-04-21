@@ -1,2 +1,6 @@
-# Azure Static Website Template
-This repository can be used to create a simple Azure hosted static website.
+# Molly Drogosz
+# Intro to Computer Science
+# Health Insurance Risk Calculator
+
+Credit: Eric Pogue Matchmaker Lite for the Web
+

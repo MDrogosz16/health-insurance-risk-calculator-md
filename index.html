@@ -1,12 +1,211 @@
 <!DOCTYPE html>
-<html>
+<html lang="eng">
+
 <head>
-<title>Hello World Azure Template</title>
+    <meta charset="UTF-8">
+    <title>Molly's Health Insurance Risk Calculator</title>
 </head>
+
+<!-- 
+    Author: Molly Drogosz
+    Project: Health Insurance Risk Calculator for the Web
+    
+    All rights reserved.
+-->
+
 <body>
-<h1>Azure Static Website Template</h1>
-<p>This page is a sample page for a “Hello World” Azure Static Website Template. The page contains an HTML validation warning. 
-Can you find and fix that warning? What about the curly quotes? Do they current work in all browsers? Can you fix the curly 
-quotes also? And what about proper indenting?</p>
+    <h1>Health Insurance Risk Calculator</h1>
+    <p>This web app will calculate your health insurance risk based on questions. Please answer each question with an option from the dropdown menu. 
+        Using information about your blood pressure, height, weight, age, and family history, this app can calculate your health insurance risk as well
+        as explain why.</p>
+
+    <label for="age">1. Select your age range:</label>
+    <select id="age">
+        <option value="0">less than 30</option>
+        <option value="10">30 -  44</option>
+        <option value="20">45 - 59</option>
+        <option value="30">60 or above</option>
+    </select>
+
+    <br /><br /><br>
+
+    <label for="height">2. Select your height in inches range:</label>
+    <select id="height">
+        <option value="52.5">51 - 54</option>
+        <option value="58.5">57 - 60</option>
+        <option value="64.5">63 - 66</option>
+        <option value="70.5">69 - 72</option>
+        <option value="76.5">75 - 78</option>
+        <option value="82.5">81 or above</option>
+    </select>
+
+    <br /><br /><br>
+
+    <label for ="weight">3. Select your weight in pounds:</label>
+    <select id="weight">
+        <option value="115">100 - 130</option>
+        <option value="145.5">131 - 160</option>
+        <option value="175.5">161 - 190</option>
+        <option value="200.5">191 - 210</option>
+        <option value="225.5">211 - 240</option>
+        <option value="255.5">241 or above</option>
+    </select>
+
+    <br /><br /><br>
+
+    <img src="Capture.png" alt="Blood Pressure Chart" style="width:50%">
+    
+    <br /><br /><br>
+
+    <label for ="bloodpressure">4. Using the above graphic, select which best describes your blood pressure:</label>
+    <select id="bloodpressure">
+        <option value="0">Normal</option>
+        <option value="15">Elevated</option>
+        <option value="30">Hypertension Stage 1</option>
+        <option value="75">Hypertension Stage 2</option>
+        <option value="100">Hypertension Crisis</option>
+    </select>
+
+    <br /><br /><br>
+
+    <h3>Family History:</h3>
+    <p>Answer yes or no if the following is part of your family history.</p>
+    <label for ="diabetes">5. Diabetes:</label>
+    <select id="diabetes">
+        <option value="0">No</option>
+        <option value="10">Yes</option>
+    </select>
+
+    <br /><br /><br>
+
+    <label for ="cancer">6. Cancer:</label>
+    <select id="cancer">
+        <option value="0">No</option>
+        <option value="10">Yes</option>
+    </select>
+
+    <br /><br /><br>
+
+    <label for ="alzheimers">7. Alzheimer's:</label>
+    <select id="alzheimers">
+        <option value="0">No</option>
+        <option value="10">Yes</option>
+    </select>
+
+    <br /><br /><br>
+
+    <button onclick="calculateRiskScore()">Calculate Risk Score</button>
+
+
+    <p id="userage"></p>
+    <p id="userbmi"></p>
+    <p id="userbloodpressure"></p>
+    <p id="userfamilyhistory"></p>
+    <p id="riskscore"></p>
+    <p id="keepgoing"></p>
+    <p id="printmessage"></p>
+
+    <button onclick="printr()">Print Results</button>
+
+
+<script>
+console.log("Starting the Calculator...");
+
+function calculateBMI(){
+    console.log("calculateBMI()");
+}
+
+function calculateRiskScore(){
+    console.log("calculateRiskScore()");
+
+    let question1Response = document.getElementById("age").selectedOptions[0].value;
+    let question2Response = document.getElementById("height").selectedOptions[0].value;
+    let question3Response = document.getElementById("weight").selectedOptions[0].value;
+    let question4Response = document.getElementById("bloodpressure").selectedOptions[0].value;
+    let question5Response = document.getElementById("diabetes").selectedOptions[0].value;
+    let question6Response = document.getElementById("cancer").selectedOptions[0].value;
+    let question7Response = document.getElementById("alzheimers").selectedOptions[0].value;
+
+    console.log("Age:");
+    console.log(document.getElementById("age").selectedOptions[0].text);
+    console.log(document.getElementById("age").selectedOptions[0].value);
+    console.log(question1Response);
+
+    console.log("Height:");
+    console.log(document.getElementById("height").selectedOptions[0].text);
+    console.log(document.getElementById("height").selectedOptions[0].value);
+    console.log(question2Response);
+
+    console.log("Weight:");
+    console.log(document.getElementById("weight").selectedOptions[0].text);
+    console.log(document.getElementById("weight").selectedOptions[0].value);
+    console.log(question3Response);
+
+    console.log("Blood Pressure:");
+    console.log(document.getElementById("bloodpressure").selectedOptions[0].text);
+    console.log(document.getElementById("bloodpressure").selectedOptions[0].value);
+    console.log(question4Response);
+
+    console.log("Diabetes:");
+    console.log(document.getElementById("diabetes").selectedOptions[0].text);
+    console.log(document.getElementById("diabetes").selectedOptions[0].value);
+    console.log(question5Response);
+
+    console.log("Cancer:");
+    console.log(document.getElementById("cancer").selectedOptions[0].text);
+    console.log(document.getElementById("cancer").selectedOptions[0].value);
+    console.log(question6Response);
+
+    console.log("Alzheimer's:");
+    console.log(document.getElementById("alzheimers").selectedOptions[0].text);
+    console.log(document.getElementById("alzheimers").selectedOptions[0].value);
+    console.log(question7Response);
+
+    let bmi =(question3Response*703) / (question2Response*question2Response);
+    console.log("bmi="+bmi);
+
+    let Age1 = Math.abs(question1Response);
+
+    let bmivalue;
+    if (bmi <= 24.9)
+        bmivalue = 0;
+    else if (bmi <= 29.9)
+        bmivalue = 30;
+    else
+        bmivalue = 75;
+
+    let BloodPressure1 = Math.abs(question4Response);
+    let FamilyHistory1 = Math.abs(question5Response + question6Response + question7Response);
+
+    totalRiskScore = (Age1 + bmivalue + BloodPressure1 + FamilyHistory1);
+    console.log("total="+totalRiskScore);
+
+    let message;
+    if (totalRiskScore <= 20) {
+        message = ", you are of low risk.";
+    } else if (totalRiskScore <= 50) {
+        message = ", you are of moderate risk.";
+    } else if (totalRiskScore <= 75) {
+        message = ", you are of high risk.";
+    }
+    else
+        message = ", you are uninsurable."
+
+    document.getElementById("userage").innerHTML = "Age: " + Age1;
+    document.getElementById("userbmi").innerHTML = "Your Calculated BMI: " + bmivalue;
+    document.getElementById("userbloodpressure").innerHTML = "Blood Pressure: " + BloodPressure1;
+    document.getElementById("userfamilyhistory").innerHTML = "Family History: " + FamilyHistory1;
+    document.getElementById("riskscore").innerHTML = "Based on your risk score of " + totalRiskScore + message;
+    document.getElementById("keepgoing").innerHTML = "If you would like to evaluate another person, re-answer all questions and calculate.";
+    document.getElementById("printmessage").innerHTML = "If you would like to print your results, please press the button below.";
+}
+
+function printr(){
+    print("Health Insurance Risk Calculator Results");
+    console.log("printresults()");
+}
+</script>
+
+
 </body>
 </html>
