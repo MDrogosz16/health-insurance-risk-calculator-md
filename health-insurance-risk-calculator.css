@@ -1,0 +1,29 @@
+html {background-color: lightyellow}
+h1 {color: darkred;
+    font-family:'Times New Roman', Times, serif;
+    font-size: x-large;
+    text-align: center;
+}
+
+h3 {color: darkorange;
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+ p {color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+label {color: black ;
+      margin-left: 50px;
+}
+
+img {display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background: transparent; 
+}
+

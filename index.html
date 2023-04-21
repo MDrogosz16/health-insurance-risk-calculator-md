@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Molly's Health Insurance Risk Calculator</title>
+    <link rel="stylesheet" href="health-insurance-risk-calculator.css">
 </head>
 
 <!-- 
@@ -15,9 +17,12 @@
 
 <body>
     <h1>Health Insurance Risk Calculator</h1>
-    <p>This web app will calculate your health insurance risk based on questions. Please answer each question with an option from the dropdown menu. 
-        Using information about your blood pressure, height, weight, age, and family history, this app can calculate your health insurance risk as well
-        as explain why.</p>
+    <p>This web app will calculate your health insurance risk based on questions. 
+        Please answer each question with an option from the dropdown menu. 
+        Using information about your blood pressure, height, weight, age, and family history, you will receive penalty points based on your answers. 
+        Your height and weight are utilized to calculate your Body-Mass Index (BMI).
+        From these factors, your health insurance risk score will be calculated and your penalty points will be displayed in order to explain your risk score. 
+        Answer each question honestly to get the most accurate score.</p>
 
     <label for="age">1. Select your age range:</label>
     <select id="age">
@@ -41,7 +46,7 @@
 
     <br /><br /><br>
 
-    <label for ="weight">3. Select your weight in pounds:</label>
+    <label for ="weight">3. Select your weight in pounds range:</label>
     <select id="weight">
         <option value="115">100 - 130</option>
         <option value="145.5">131 - 160</option>
@@ -102,8 +107,8 @@
     <p id="userbloodpressure"></p>
     <p id="userfamilyhistory"></p>
     <p id="riskscore"></p>
-    <p id="keepgoing"></p>
     <p id="printmessage"></p>
+    <p id="keepgoing"></p>
 
     <button onclick="printr()">Print Results</button>
 
@@ -195,12 +200,13 @@ function calculateRiskScore(){
         message = ", you are uninsurable."
 
     document.getElementById("userage").innerHTML = "Age: " + Age1;
-    document.getElementById("userbmi").innerHTML = "BMI: " + bmivalue + (" - index = " + Math.round(bmi * 10) / 10);
+    document.getElementById("userbmi").innerHTML = "BMI: " + bmivalue + (" (index = " + Math.round(bmi * 10) / 10) + ")";
     document.getElementById("userbloodpressure").innerHTML = "Blood Pressure: " + BloodPressure1;
     document.getElementById("userfamilyhistory").innerHTML = "Family History: " + FamilyHistory1;
     document.getElementById("riskscore").innerHTML = "Based on your risk score of " + totalRiskScore + message;
-    document.getElementById("keepgoing").innerHTML = "If you would like to evaluate another person, re-answer all questions and calculate.";
     document.getElementById("printmessage").innerHTML = "If you would like to print your results, please press the button below.";
+    document.getElementById("keepgoing").innerHTML = "If you would like to evaluate another person, re-answer all questions and calculate.";
+    
 }
 
 function printr(){
