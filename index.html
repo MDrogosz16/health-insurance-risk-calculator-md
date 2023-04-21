@@ -71,8 +71,6 @@
         <option value="100">Hypertension Crisis</option>
     </select>
 
-    <br /><br /><br>
-
     <h3>Family History:</h3>
     <p>Answer yes or no if the following is part of your family history.</p>
     <label for ="diabetes">5. Diabetes:</label>
@@ -100,7 +98,6 @@
     <br /><br /><br>
 
     <button onclick="calculateRiskScore()">Calculate Risk Score</button>
-
 
     <p id="userage"></p>
     <p id="userbmi"></p>
@@ -190,14 +187,14 @@ function calculateRiskScore(){
 
     let message;
     if (totalRiskScore <= 20) {
-        message = ", you are of low risk.";
+        message = ", you are of <b>low risk</b>.";
     } else if (totalRiskScore <= 50) {
-        message = ", you are of moderate risk.";
+        message = ", you are of moderate risk</b>.";
     } else if (totalRiskScore <= 75) {
-        message = ", you are of high risk.";
+        message = ", you are of high risk</b>.";
     }
     else
-        message = ", you are uninsurable."
+        message = ", you are uninsurable</b>."
 
     document.getElementById("userage").innerHTML = "Age: " + Age1;
     document.getElementById("userbmi").innerHTML = "BMI: " + bmivalue + (" (index = " + Math.round(bmi * 10) / 10) + ")";
