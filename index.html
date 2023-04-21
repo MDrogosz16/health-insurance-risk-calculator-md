@@ -53,7 +53,7 @@
 
     <br /><br /><br>
 
-    <img src="Capture.PNG" alt="Blood Pressure Chart" style="width:50%">
+    <img src="Capture.png" alt="Blood Pressure Chart" style="width:50%">
     
     <br /><br /><br>
 
@@ -161,7 +161,7 @@ function calculateRiskScore(){
     console.log(document.getElementById("alzheimers").selectedOptions[0].value);
     console.log(question7Response);
 
-    let bmi =((question3Response*703) / (question2Response*question2Response));
+    let bmi =(question3Response*703) / (question2Response*question2Response);
     console.log("bmi="+bmi);
 
     let Age1 = Math.abs(question1Response);
@@ -175,7 +175,10 @@ function calculateRiskScore(){
         bmivalue = 75;
 
     let BloodPressure1 = Math.abs(question4Response);
-    let FamilyHistory1 = Math.abs(question5Response + question6Response + question7Response);
+    let Diabetes1 = Math.abs(question5Response);
+    let Cancer1 = Math.abs(question6Response);
+    let Alzheimers1 = Math.abs(question7Response);
+    let FamilyHistory1 = Diabetes1 + Cancer1 + Alzheimers1;
 
     totalRiskScore = (Age1 + bmivalue + BloodPressure1 + FamilyHistory1);
     console.log("total="+totalRiskScore);
@@ -192,7 +195,7 @@ function calculateRiskScore(){
         message = ", you are uninsurable."
 
     document.getElementById("userage").innerHTML = "Age: " + Age1;
-    document.getElementById("userbmi").innerHTML = "BMI: " + bmivalue + (" - index = " + Math.round(bmi * 100 / 100).toFixed(1));
+    document.getElementById("userbmi").innerHTML = "BMI: " + bmivalue + (" - index = " + Math.round(bmi * 10) / 10);
     document.getElementById("userbloodpressure").innerHTML = "Blood Pressure: " + BloodPressure1;
     document.getElementById("userfamilyhistory").innerHTML = "Family History: " + FamilyHistory1;
     document.getElementById("riskscore").innerHTML = "Based on your risk score of " + totalRiskScore + message;
