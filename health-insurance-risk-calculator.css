@@ -20,7 +20,8 @@ h3 {color: darkorange;
 
 label {color: black ;
       margin-left: 50px;
-      font-family: Arial, Helvetica, sans-serif
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
 }
 
 img {
@@ -36,7 +37,6 @@ button {
     background-color: gold;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-    text-decoration: none;
     cursor: pointer;
     font-size: 16px;
     margin-left: 50px;
@@ -44,19 +44,14 @@ button {
 }
 
 select {
-    appearance: none;
-    outline: 0;
     background: greenyellow;
-    background-image: none;
     height: 100%;
-    width: 15%;
+    width: 20%;
     text-align: center;
     font-size: 14px;
     color: black;
-    cursor: pointer;
     border: 1px solid black;
     border-radius: 3px;
-    margin-right: 50px;
 }
  
 
